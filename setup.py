@@ -25,10 +25,10 @@ c_sources = (
             C_SRC_PREFIX,
             'vad',
             '*.c'))
-    + glob.glob(
-        os.path.join(
-            C_SRC_RTC_PREFIX,
-            'checks.cc')))
+    # + glob.glob(
+    #     os.path.join(
+    #         C_SRC_RTC_PREFIX,
+    #         'checks.cc')))
 
 define_macros = []
 extra_compile_args = []

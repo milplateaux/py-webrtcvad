@@ -1,3 +1,32 @@
+# This ignoring fils
+
+# DS_store
+.DS_Store
+
+# checkpoints
+.ipynb_checkpoints/
+
+# spyder project files
+.spyproject/
+
+# compiled cache files
+__pycache__/
+
+# log folder
+log/
+
+# output folder
+loaded_data/
+
+# Visual Studio Code database
+/.vscode
+
+# batch files in windows
+/*.bat
+
+ipadic/
+.idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
