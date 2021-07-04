@@ -25,10 +25,7 @@ c_sources = (
             C_SRC_PREFIX,
             'vad',
             '*.c'))
-    # + glob.glob(
-    #     os.path.join(
-    #         C_SRC_RTC_PREFIX,
-    #         'checks.cc')))
+)
 
 define_macros = []
 extra_compile_args = []
@@ -37,9 +34,9 @@ if sys.platform.startswith('win'):
     define_macros.extend([('_WIN32', None), ('WEBRTC_WIN', None)])
 else:
     define_macros.extend([('WEBRTC_POSIX', None), ])
-    extra_compile_args.extend(['-std=c++11'])
+    extra_compile_args.extend(['-std=c11'])
 
-module = Extension('_webrtcvad',
+module = Extension('_vad_nc',
                    define_macros=define_macros,
                    extra_compile_args=extra_compile_args,
                    sources=c_sources,
@@ -48,18 +45,18 @@ module = Extension('_webrtcvad',
 here = os.path.abspath(os.path.dirname(__file__))
 
 # Get the long description from the README file
-with open(os.path.join(here, 'README.rst')) as f:
+with open(os.path.join(here, 'README.md')) as f:
     long_description = f.read()
 
 setup(
-    name='webrtcvad',
-    author='John Wiseman',
-    author_email='jjwiseman@gmail.com',
-    version='2.0.11.dev0',
+    name='vad-nc',
+    author='Rivaille Lee',
+    author_email='xxxxx@gmail.com',
+    version='1.0.0.dev0',
     description=('Python interface to the Google WebRTC Voice '
-                 'Activity Detector (VAD)'),
+                 'Activity Detector (VAD) added with some wave Data Preprocessing modules'),
     long_description=long_description,
-    url='https://github.com/wiseman/py-webrtcvad',
+    url='xxx',
     license='MIT',
     classifiers=[
         # How mature is this project? Common values are
@@ -88,15 +85,17 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
-    keywords='speechrecognition asr voiceactivitydetection vad webrtc',
+    keywords='speechrecognition asr voiceactivitydetection vad webrtc noise-reduction',
     ext_modules=[module],
     py_modules=['webrtcvad'],
     test_suite='nose.collector',
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
-    # for example: $ pip install -e .[dev,test]
+    # for example: $ pip install -e .[test,doc]
     extras_require={
-        'dev': ['nose', 'check-manifest', 'unittest2', 'zest.releaser',
+        'test': ['nose', 'check-manifest', 'unittest2', 'zest.releaser',
                 'psutil', 'memory_profiler']
-    })
+    }
+)
